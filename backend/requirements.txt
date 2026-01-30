@@ -1,0 +1,47 @@
+# =============================
+# FastAPI & ASGI Server
+# =============================
+fastapi==0.108.0
+uvicorn[standard]==0.26.0
+python-multipart==0.0.6
+python-dotenv==1.0.0
+watchfiles==0.21.0
+
+# =============================
+# Background Tasks & Queue
+# =============================
+celery==5.3.6
+redis==5.0.1
+kombu==5.3.5
+eventlet==0.35.2
+
+# =============================
+# Database (PostgreSQL / Supabase)
+# =============================
+psycopg2-binary==2.9.9
+
+# =============================
+# PDF Processing (Text-based PDFs)
+# =============================
+pdfplumber==0.10.3
+
+# =============================
+# Excel Generation
+# =============================
+openpyxl==3.1.2
+
+# =============================
+# Data Validation
+# =============================
+pydantic==2.5.3
+
+# =============================
+# Typing / Compatibility
+# =============================
+typing-extensions>=4.8.0
+
+
+# =============================
+# Generative AI SDK
+# =============================
+google-genai>=1.50.0

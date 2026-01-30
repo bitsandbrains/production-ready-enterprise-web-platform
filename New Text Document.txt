@@ -1,0 +1,29 @@
+NEW RECOMMENDED WAY:
+Run the 'run_project.ps1' script in PowerShell to start everything automatically.
+Command: .\run_project.ps1
+
+-----------------------------------------------------------
+MANUAL STEPS (If you prefer separate terminals):
+
+1. Start Docker Containers
+# Instead of 'docker run', use 'docker start' if containers already exist to avoid name conflicts.
+docker start pdf-extractor-redis
+docker start pdf-extractor-postgres
+# (If they don't exist yet, then use these once:)
+# docker run -d --name pdf-extractor-redis -p 6379:6379 redis:latest
+# docker run -d --name pdf-extractor-postgres -e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=local123 -e POSTGRES_DB=pdf_extractor -p 5432:5432 postgres:15
+
+2. Start Backend API (Terminal 1)
+cd "c:\Users\asus\Downloads\Telegram Desktop\lasa-pdf-contract-extractor-platform - New (1)\lasa-pdf-contract-extractor-platform - New"
+.\backend\venv\Scripts\activate
+uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000
+
+3. Start Celery Worker (Terminal 2)
+cd "c:\Users\asus\Downloads\Telegram Desktop\lasa-pdf-contract-extractor-platform - New (1)\lasa-pdf-contract-extractor-platform - New"
+.\backend\venv\Scripts\activate
+celery -A backend.tasks worker --loglevel=info --pool=solo
+
+4. Start Frontend (Terminal 3)
+cd "c:\Users\asus\Downloads\Telegram Desktop\lasa-pdf-contract-extractor-platform - New (1)\lasa-pdf-contract-extractor-platform - New\frontend"
+npm run dev
+
